@@ -7,12 +7,12 @@
   <style>
     /* Renk paletinin tutarlılığı için değişkenler */
     :root {
-      --main-red: #FF0000;  /* Ana kırmızı renk */
-      --secondary-red: #B22222; /* Daha koyu kırmızı */
-      --hover-red: #FF6347;  /* Hover için kırmızımsı portakal rengi */
+      --main-red: #D32F2F;  /* Ana kırmızı renk */
+      --secondary-red: #B71C1C; /* Daha koyu kırmızı */
       --light-bg: #F5F5F5;  /* Açık arka plan rengi */
       --dark-bg: #222222;  /* Koyu arka plan rengi */
-      --button-hover: #FF4500; /* Buton hover için portakal kırmızı */
+      --button-hover: #B71C1C; /* Koyu kırmızı */
+      --button-hover-light: #FF5722; /* Daha açık kırmızı */
     }
 
     body {
@@ -31,7 +31,7 @@
     }
 
     header {
-      background: linear-gradient(45deg, var(--main-red), var(--secondary-red));
+      background: var(--main-red);
       color: white;
       padding: 1rem;
       text-align: center;
@@ -65,7 +65,7 @@
 
     nav a:hover {
       color: #F0F8FF; /* Açık mavi */
-      background-color: var(--hover-red); /* Kırmızımsı portakal rengi */
+      background-color: var(--secondary-red); /* Koyu kırmızı */
     }
 
     section {
@@ -85,7 +85,7 @@
     .language-toggle button {
       padding: 0.5rem 1rem;
       margin-left: 5px;
-      background-color: var(--hover-red);
+      background-color: var(--button-hover-light);
       color: white;
       border: none;
       border-radius: 4px;
@@ -97,7 +97,7 @@
     }
 
     footer {
-      background: linear-gradient(45deg, var(--main-red), var(--secondary-red));
+      background: var(--main-red);
       color: white;
       text-align: center;
       padding: 1rem;
@@ -108,7 +108,7 @@
       padding: 0.6rem 1.2rem;
       border: none;
       border-radius: 5px;
-      background-color: var(--hover-red);
+      background-color: var(--button-hover-light);
       color: white;
       cursor: pointer;
       margin-top: 1rem;
@@ -156,7 +156,7 @@
       position: fixed;
       top: 10px;
       right: 10px;
-      background-color: var(--hover-red);
+      background-color: var(--button-hover-light);
       color: white;
       padding: 0.5rem 1rem;
       border: none;
@@ -178,7 +178,7 @@
 
     /* Send ve Download CV butonları */
     .button-red {
-      background-color: var(--hover-red);
+      background-color: var(--button-hover-light);
       color: white;
       padding: 0.7rem 1.5rem;
       border-radius: 5px;
@@ -360,7 +360,7 @@
     <p data-lang="en"><strong>Phone:</strong> +90 546 292 7001</p>
     <p data-lang="tr"><strong>Telefon:</strong> +90 546 292 7001</p>
     <div style="text-align: center; margin-top: 2rem;">
-      <a href="cv.pdf" download style="background-color:#FF6347; color:white; padding:0.7rem 1.2rem; text-decoration:none; border-radius:5px;">Download CV</a>
+      <a href="cv.pdf" download style="background-color:#D32F2F; color:white; padding:0.7rem 1.2rem; text-decoration:none; border-radius:5px;">Download CV</a>
     </div>
   </section>
 
