@@ -20,15 +20,19 @@
     }
 
     header {
-      background: linear-gradient(45deg, #FF6347, #FF4500); /* Canlı kırmızı tonları */
+      background: linear-gradient(45deg, #FF0000, #B22222); /* Kırmızı tonları */
       color: white;
       padding: 1rem;
       text-align: center;
       border-bottom: 3px solid #222;
     }
 
+    header h1 {
+      color: #FF0000; /* Başlıkları kırmızı yapıyoruz */
+    }
+
     nav {
-      background-color: #FF4500; /* Canlı kırmızı */
+      background-color: #B22222; /* Kırmızı */
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -105,10 +109,11 @@
 
     img {
       width: 100%;
-      max-width: 250px;
-      height: auto;
-      border-radius: 50%;
+      max-width: 300px;
+      height: 300px; /* Fotoğrafı kare yapmak için yükseklik de verildi */
+      object-fit: cover; /* Fotoğrafın kareye düzgün şekilde sığması için */
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border-radius: 10px; /* Kenarları biraz yuvarladım */
     }
 
     img:hover {
@@ -139,7 +144,7 @@
     button.toggle-mode {
       position: fixed;
       top: 10px;
-      right: 10px; /* Sağ üst köşeye yerleştirildi */
+      right: 10px;
       background-color: #FF6347;
       color: white;
       padding: 0.5rem 1rem;
