@@ -5,14 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Personal Web Portfolio</title>
   <style>
+    /* Renk paletinin tutarlılığı için değişkenler */
+    :root {
+      --main-red: #FF0000;  /* Ana kırmızı renk */
+      --secondary-red: #B22222; /* Daha koyu kırmızı */
+      --hover-red: #FF6347;  /* Hover için kırmızımsı portakal rengi */
+      --light-bg: #F5F5F5;  /* Açık arka plan rengi */
+      --dark-bg: #222222;  /* Koyu arka plan rengi */
+      --button-hover: #FF4500; /* Buton hover için portakal kırmızı */
+    }
+
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #e0f7fa; /* Canlı, taze mavi tonu */
+      background-color: var(--light-bg);
+      color: var(--dark-bg);
       opacity: 0;
       transition: opacity 1s ease-in;
-      scroll-behavior: smooth; /* Kayarak geçişi etkinleştirdik */
+      scroll-behavior: smooth;
     }
 
     body.loaded {
@@ -20,7 +31,7 @@
     }
 
     header {
-      background: linear-gradient(45deg, #FF0000, #B22222); /* Kırmızı tonları */
+      background: linear-gradient(45deg, var(--main-red), var(--secondary-red));
       color: white;
       padding: 1rem;
       text-align: center;
@@ -28,11 +39,11 @@
     }
 
     header h1 {
-      color: white; /* Başlık beyaz renkte */
+      color: white;
     }
 
     nav {
-      background-color: #FF0000; /* Kırmızı */
+      background-color: var(--main-red);
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -54,7 +65,7 @@
 
     nav a:hover {
       color: #F0F8FF; /* Açık mavi */
-      background-color: #FF6347; /* Kırmızımsı portakal rengi */
+      background-color: var(--hover-red); /* Kırmızımsı portakal rengi */
     }
 
     section {
@@ -74,7 +85,7 @@
     .language-toggle button {
       padding: 0.5rem 1rem;
       margin-left: 5px;
-      background-color: #FF6347;
+      background-color: var(--hover-red);
       color: white;
       border: none;
       border-radius: 4px;
@@ -82,11 +93,11 @@
     }
 
     .language-toggle button:hover {
-      background-color: #FF4500;
+      background-color: var(--button-hover);
     }
 
     footer {
-      background: linear-gradient(45deg, #FF0000, #B22222); /* Kırmızı */
+      background: linear-gradient(45deg, var(--main-red), var(--secondary-red));
       color: white;
       text-align: center;
       padding: 1rem;
@@ -97,23 +108,23 @@
       padding: 0.6rem 1.2rem;
       border: none;
       border-radius: 5px;
-      background-color: #FF6347;
+      background-color: var(--hover-red);
       color: white;
       cursor: pointer;
       margin-top: 1rem;
     }
 
     form button:hover {
-      background-color: #FF4500;
+      background-color: var(--button-hover);
     }
 
     img {
       width: 100%;
       max-width: 300px;
-      height: 300px; /* Fotoğrafı kare yapmak için yükseklik de verildi */
-      object-fit: cover; /* Fotoğrafın kareye düzgün şekilde sığması için */
+      height: 300px;
+      object-fit: cover;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      border-radius: 10px; /* Kenarları biraz yuvarladım */
+      border-radius: 10px;
     }
 
     img:hover {
@@ -145,7 +156,7 @@
       position: fixed;
       top: 10px;
       right: 10px;
-      background-color: #FF6347; /* Dark Mode tuşu kırmızı */
+      background-color: var(--hover-red);
       color: white;
       padding: 0.5rem 1rem;
       border: none;
@@ -155,7 +166,7 @@
     }
 
     button.toggle-mode:hover {
-      background-color: #FF4500;
+      background-color: var(--button-hover);
     }
 
     /* Form ve fotoğrafın altındaki yazıyı ortalamak */
@@ -167,7 +178,7 @@
 
     /* Send ve Download CV butonları */
     .button-red {
-      background-color: #FF6347;
+      background-color: var(--hover-red);
       color: white;
       padding: 0.7rem 1.5rem;
       border-radius: 5px;
@@ -176,7 +187,7 @@
     }
 
     .button-red:hover {
-      background-color: #FF4500;
+      background-color: var(--button-hover);
     }
 
   </style>
