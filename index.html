@@ -9,7 +9,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #e0e0e0; /* Açık gri */
+      background-color: #F0F8FF; /* Açık mavi ton */
       opacity: 0;
       transition: opacity 1s ease-in;
     }
@@ -19,37 +19,47 @@
     }
 
     header {
-      background: linear-gradient(45deg, #4B2F83, #2C1F66); /* Koyu mor / lacivert */
+      background: linear-gradient(45deg, #4A90E2, #0066CC); /* Canlı mavi */
       color: white;
       padding: 1rem;
       text-align: center;
     }
 
     nav {
-      background-color: #2C1F66; /* Daha koyu bir ton */
+      background-color: #0066CC; /* Canlı mavi */
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 1rem;
       padding: 0.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #F0F8FF; /* Açık mavi */
     }
 
     section {
       padding: 2rem;
       max-width: 800px;
       margin: auto;
+      opacity: 0;
+      transition: opacity 1s ease-out;
     }
 
     .language-toggle button {
       padding: 0.5rem 1rem;
       margin-left: 5px;
-      background-color: #4B2F83; /* Koyu mor */
+      background-color: #4A90E2; /* Mavi */
       color: white;
       border: none;
       border-radius: 4px;
@@ -57,11 +67,11 @@
     }
 
     .language-toggle button:hover {
-      background-color: #3C1D63; /* Koyu mor daha belirgin */
+      background-color: #0066CC; /* Canlı mavi */
     }
 
     footer {
-      background: linear-gradient(45deg, #2C1F66, #4B2F83); /* Aynı koyu mor */
+      background: linear-gradient(45deg, #0066CC, #4A90E2); /* Mavi tonları */
       color: white;
       text-align: center;
       padding: 1rem;
@@ -72,14 +82,14 @@
       padding: 0.6rem 1.2rem;
       border: none;
       border-radius: 5px;
-      background-color: #4B2F83; /* Canlı mor */
+      background-color: #4A90E2; /* Mavi */
       color: white;
       cursor: pointer;
       margin-top: 1rem;
     }
 
     form button:hover {
-      background-color: #3C1D63; /* Koyu mor */
+      background-color: #0066CC; /* Canlı mavi */
     }
 
     img {
@@ -112,8 +122,8 @@
     button.toggle-mode {
       position: fixed;
       top: 10px;
-      left: 10px;
-      background-color: #4B2F83;
+      right: 10px; /* Sağ üst köşeye yerleştirildi */
+      background-color: #4A90E2;
       color: white;
       padding: 0.5rem 1rem;
       border: none;
@@ -123,8 +133,35 @@
     }
 
     button.toggle-mode:hover {
-      background-color: #3C1D63;
+      background-color: #0066CC;
     }
+
+    /* Sayfa Kayarak Açılma Efekti */
+    section.active {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 1s ease-in, transform 1s ease-in;
+    }
+
+    section {
+      transform: translateY(50px);
+    }
+
+    /* Header ve Footer Etkileşimli Arka Planlar */
+    header {
+      background: linear-gradient(45deg, #4A90E2, #0066CC);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    footer {
+      background: linear-gradient(45deg, #0066CC, #4A90E2);
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+
   </style>
   <script>
     function toggleLanguage(lang) {
@@ -141,6 +178,14 @@
     window.onload = () => {
       document.body.classList.add('loaded');
       toggleLanguage('en');
+
+      // Sayfa Kayarak Gelme Efekti
+      const sections = document.querySelectorAll('section');
+      sections.forEach((section, index) => {
+        setTimeout(() => {
+          section.classList.add('active');
+        }, index * 500); // Her bir bölüm için kayarak açılma sırası
+      });
     };
   </script>
 </head>
@@ -273,7 +318,7 @@
     <p data-lang="en"><strong>Phone:</strong> +90 546 292 7001</p>
     <p data-lang="tr"><strong>Telefon:</strong> +90 546 292 7001</p>
     <div style="text-align: center; margin-top: 2rem;">
-      <a href="cv.pdf" download style="background-color:#4B2F83; color:white; padding:0.7rem 1.2rem; text-decoration:none; border-radius:5px;">Download CV</a>
+      <a href="cv.pdf" download style="background-color:#4A90E2; color:white; padding:0.7rem 1.2rem; text-decoration:none; border-radius:5px;">Download CV</a>
     </div>
   </section>
 
