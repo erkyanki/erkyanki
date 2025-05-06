@@ -9,10 +9,10 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #F0F8FF; /* Açık mavi ton */
+      background-color: #e0f7fa; /* Canlı, taze mavi tonu */
       opacity: 0;
       transition: opacity 1s ease-in;
-      scroll-behavior: smooth; /* Kayarak geçişi etkinleştirdik */
+      scroll-behavior: smooth; /* Yavaş kayma için */
     }
 
     body.loaded {
@@ -20,15 +20,15 @@
     }
 
     header {
-      background: linear-gradient(45deg, #4A90E2, #0066CC); /* Canlı mavi */
+      background: linear-gradient(45deg, #FF6347, #FF4500); /* Canlı kırmızı tonları */
       color: white;
       padding: 1rem;
       text-align: center;
-      border-bottom: 3px solid #222; /* Alt çizgi ekledik */
+      border-bottom: 3px solid #222;
     }
 
     nav {
-      background-color: #0066CC; /* Canlı mavi */
+      background-color: #FF4500; /* Canlı kırmızı */
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
@@ -49,8 +49,8 @@
     }
 
     nav a:hover {
-      color: #F0F8FF; /* Açık mavi */
-      background-color: #4A90E2; /* Canlı mavi */
+      color: #F0F8FF;
+      background-color: #FF6347; /* Kırmızımsı portakal rengi */
     }
 
     section {
@@ -59,7 +59,7 @@
       margin: auto;
       opacity: 0;
       transform: translateY(50px);
-      transition: opacity 1s ease-in, transform 1s ease-in; /* Kayarak giriş */
+      transition: opacity 1s ease-in, transform 1s ease-in;
     }
 
     .active {
@@ -70,7 +70,7 @@
     .language-toggle button {
       padding: 0.5rem 1rem;
       margin-left: 5px;
-      background-color: #4A90E2; /* Mavi */
+      background-color: #FF6347;
       color: white;
       border: none;
       border-radius: 4px;
@@ -78,11 +78,11 @@
     }
 
     .language-toggle button:hover {
-      background-color: #0066CC; /* Canlı mavi */
+      background-color: #FF4500;
     }
 
     footer {
-      background: linear-gradient(45deg, #0066CC, #4A90E2); /* Mavi tonları */
+      background: linear-gradient(45deg, #FF4500, #FF6347);
       color: white;
       text-align: center;
       padding: 1rem;
@@ -93,28 +93,27 @@
       padding: 0.6rem 1.2rem;
       border: none;
       border-radius: 5px;
-      background-color: #4A90E2; /* Mavi */
+      background-color: #FF6347;
       color: white;
       cursor: pointer;
       margin-top: 1rem;
     }
 
     form button:hover {
-      background-color: #0066CC; /* Canlı mavi */
+      background-color: #FF4500;
     }
 
-    /* Fotoğraf Efekti ve Boyutu */
     img {
       width: 100%;
-      max-width: 250px; /* Fotoğrafı biraz daha büyüttük */
+      max-width: 250px;
       height: auto;
       border-radius: 50%;
-      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover efekti için geçiş */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     img:hover {
-      transform: scale(1.1); /* Fotoğrafın üzerine gelindiğinde büyüme efekti */
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Fotoğrafın etrafında hafif gölge */
+      transform: scale(1.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
 
     @media screen and (max-width: 768px) {
@@ -140,8 +139,8 @@
     button.toggle-mode {
       position: fixed;
       top: 10px;
-      right: 10px; /* Sağ üst köşeye yerleştirildi */
-      background-color: #4A90E2;
+      right: 10px;
+      background-color: #FF6347;
       color: white;
       padding: 0.5rem 1rem;
       border: none;
@@ -151,7 +150,7 @@
     }
 
     button.toggle-mode:hover {
-      background-color: #0066CC;
+      background-color: #FF4500;
     }
 
   </style>
@@ -177,6 +176,21 @@
         setTimeout(() => {
           section.classList.add('active');
         }, index * 500); // Her bir bölüm için kayarak açılma sırası
+      });
+
+      // Scroll Kayma Efekti
+      const links = document.querySelectorAll('nav a');
+      links.forEach(link => {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href').slice(1);
+          const targetElement = document.getElementById(targetId);
+          
+          window.scrollTo({
+            top: targetElement.offsetTop - 50, // Hedef öğe üstüne kaydırma (biraz yukarıya kaydırdık)
+            behavior: 'smooth'
+          });
+        });
       });
     };
   </script>
@@ -291,7 +305,7 @@
     <p data-lang="en"><strong>Phone:</strong> +90 546 292 7001</p>
     <p data-lang="tr"><strong>Telefon:</strong> +90 546 292 7001</p>
     <div style="text-align: center; margin-top: 2rem;">
-      <a href="cv.pdf" download style="background-color:#4A90E2; color:white; padding:0.7rem 1.2rem; text-decoration:none; border-radius:5px;">Download CV</a>
+      <a href="cv.pdf" download style="background-color:#FF6347; color:white; padding:0.7rem 1.2rem; text-decoration:none; border-radius:5px;">Download CV</a>
     </div>
   </section>
 
