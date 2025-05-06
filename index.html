@@ -12,6 +12,7 @@
       background-color: #F0F8FF; /* Açık mavi ton */
       opacity: 0;
       transition: opacity 1s ease-in;
+      scroll-behavior: smooth; /* Kayarak geçişi etkinleştirdik */
     }
 
     body.loaded {
@@ -23,6 +24,7 @@
       color: white;
       padding: 1rem;
       text-align: center;
+      border-bottom: 3px solid #222; /* Alt çizgi ekledik */
     }
 
     nav {
@@ -42,10 +44,13 @@
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s;
+      padding: 0.5rem;
+      border-radius: 5px;
     }
 
     nav a:hover {
       color: #F0F8FF; /* Açık mavi */
+      background-color: #4A90E2; /* Canlı mavi */
     }
 
     section {
@@ -53,7 +58,13 @@
       max-width: 800px;
       margin: auto;
       opacity: 0;
-      transition: opacity 1s ease-out;
+      transform: translateY(50px);
+      transition: opacity 1s ease-in, transform 1s ease-in; /* Kayarak giriş */
+    }
+
+    .active {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .language-toggle button {
@@ -92,11 +103,18 @@
       background-color: #0066CC; /* Canlı mavi */
     }
 
+    /* Fotoğraf Efekti ve Boyutu */
     img {
       width: 100%;
-      max-width: 600px;
+      max-width: 250px; /* Fotoğrafı biraz daha büyüttük */
       height: auto;
-      border-radius: 8px; /* Köşeleri yuvarlatma */
+      border-radius: 50%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hover efekti için geçiş */
+    }
+
+    img:hover {
+      transform: scale(1.1); /* Fotoğrafın üzerine gelindiğinde büyüme efekti */
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Fotoğrafın etrafında hafif gölge */
     }
 
     @media screen and (max-width: 768px) {
@@ -134,32 +152,6 @@
 
     button.toggle-mode:hover {
       background-color: #0066CC;
-    }
-
-    /* Sayfa Kayarak Açılma Efekti */
-    section.active {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 1s ease-in, transform 1s ease-in;
-    }
-
-    section {
-      transform: translateY(50px);
-    }
-
-    /* Header ve Footer Etkileşimli Arka Planlar */
-    header {
-      background: linear-gradient(45deg, #4A90E2, #0066CC);
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
-    footer {
-      background: linear-gradient(45deg, #0066CC, #4A90E2);
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
     }
 
   </style>
@@ -214,7 +206,7 @@
 
   <section id="home">
     <div style="text-align: center; margin-bottom: 1rem;">
-      <img src="profile.jpg" alt="Erk Yankı Ural" style="width: 180px; height: auto; border-radius: 50%;">
+      <img src="profile.jpg" alt="Erk Yankı Ural">
     </div>
     <p data-lang="en">Mechanical engineering student passionate about design and innovation.</p>
     <p data-lang="tr">Tasarım ve inovasyona tutkusu olan bir makine mühendisliği öğrencisi.</p>
@@ -234,91 +226,13 @@
   <section id="projects">
     <h2 data-lang="en">Projects</h2>
     <h2 data-lang="tr">Projeler</h2>
-
     <div data-lang="en">
-      <img src="project1.jpg" alt="MakerX RC Car" style="width:100%; max-width:600px; margin-bottom:1rem;">
+      <img src="project1.jpg" alt="MakerX RC Car">
       <h3>MakerX Arduino RC Car Project</h3>
       <p><strong>Goal:</strong> To develop a Bluetooth-controlled RC car using MakerX and Arduino technologies.</p>
       <p><strong>Technologies Used:</strong> Arduino UNO, Bluetooth Module (HC-05), Motor Driver (L298N), MakerX Robotics Kit</p>
       <p><strong>My Contribution:</strong> Programmed the Arduino microcontroller, integrated the Bluetooth module for remote control, and assembled the car's electrical and mechanical components.</p>
       <p><strong>Outcome:</strong> Created a fully functional RC car that can be remotely controlled via a mobile app.</p>
-    </div>
-
-    <div data-lang="tr">
-      <img src="project1.jpg" alt="MakerX RC Araba" style="width:100%; max-width:600px; margin-bottom:1rem;">
-      <h3>MakerX Arduino ile Uzaktan Kumandalı Araba Projesi</h3>
-      <p><strong>Proje Amacı:</strong> MakerX ve Arduino teknolojilerini kullanarak Bluetooth ile uzaktan kontrol edilebilen bir RC araba geliştirmek.</p>
-      <p><strong>Kullanılan Teknolojiler:</strong> Arduino UNO, Bluetooth Modülü (HC-05), Motor Sürücü (L298N), MakerX Robotik Kiti</p>
-      <p><strong>Benim Katkım:</strong> Arduino mikrodenetleyicisini programladım, Bluetooth modülünü entegre ederek mobil uygulama ile kontrol sağladım ve aracın elektriksel ve mekanik montajını gerçekleştirdim.</p>
-      <p><strong>Sonuç:</strong> Mobil uygulama ile uzaktan kontrol edilebilen tam işlevsel bir RC araba geliştirildi.</p>
-    </div>
-
-    <div data-lang="en">
-      <img src="project2.png" alt="Geothermal Power Plant Diagram" style="width:100%; max-width:600px; margin-bottom:1rem;">
-      <h3>Multigeneration Geothermal Power Plant</h3>
-      <p><strong>Goal:</strong> To design a geothermal-based multigeneration system producing electricity, hydrogen, and freshwater.</p>
-      <p><strong>Technologies Used:</strong> SolidWorks, MATLAB, Engineering Equation Solver (EES)</p>
-      <p><strong>My Contribution:</strong> Designed system components, performed thermodynamic analysis, and optimized hydrogen and water output using real geothermal data.</p>
-      <p><strong>Outcome:</strong> The model showed feasibility and high efficiency of a combined system, contributing to sustainable energy solutions.</p>
-    </div>
-
-    <div data-lang="tr">
-      <img src="project2.png" alt="Jeotermal Enerji Sistemi Diyagramı" style="width:100%; max-width:600px; margin-bottom:1rem;">
-      <h3>Çoklu Üretim İçin Jeotermal Enerji Santrali</h3>
-      <p><strong>Proje Amacı:</strong> Elektrik, hidrojen ve tatlı su üretebilen jeotermal tabanlı bir çoklu üretim sistemi tasarlamak.</p>
-      <p><strong>Kullanılan Teknolojiler:</strong> SolidWorks, MATLAB, Engineering Equation Solver (EES)</p>
-      <p><strong>Benim Katkım:</strong> Sistem bileşenlerini tasarladım, termodinamik analiz yaptım ve jeotermal verilerle hidrojen ve su üretimini optimize ettim.</p>
-      <p><strong>Sonuç:</strong> Model, entegre sistemin uygulanabilirliğini ve yüksek verimliliğini göstererek sürdürülebilir enerji çözümlerine katkı sağladı.</p>
-    </div>
-  </section>
-
-  <section id="education">
-    <h2 data-lang="en">Education</h2>
-    <h2 data-lang="tr">Eğitim</h2>
-    <ul data-lang="en">
-      <li><strong>Yaşar University</strong> – B.Sc. in Mechanical Engineering (2021 – 2025)</li>
-      <li><strong>Yunus Emre Anatolian High School</strong> (2014 – 2018)</li>
-    </ul>
-    <ul data-lang="tr">
-      <li><strong>Yaşar Üniversitesi</strong> – Makine Mühendisliği Lisans Programı (2021 – 2025)</li>
-      <li><strong>Yunus Emre Anadolu Lisesi</strong> (2014 – 2018)</li>
-    </ul>
-  </section>
-
-  <section id="experience">
-    <h2 data-lang="en">Experience</h2>
-    <h2 data-lang="tr">Deneyim</h2>
-    <ul data-lang="en">
-      <li><strong>Intern, Production Department – CMS Jant</strong> (2023)<br>Assisted in production line observation, quality control steps, and gained experience in industrial wheel manufacturing processes.</li>
-    </ul>
-    <ul data-lang="tr">
-      <li><strong>Stajyer, Üretim Departmanı – CMS Jant</strong> (2023)<br>Üretim hattı gözlemleri, kalite kontrol adımları ve endüstriyel jant üretimi süreçlerinde deneyim kazandım.</li>
-    </ul>
-  </section>
-
-  <section id="contact">
-    <h2 data-lang="en">Contact</h2>
-    <h2 data-lang="tr">İletişim</h2>
-    <form action="mailto:erkyanki@gmail.com" method="post" enctype="text/plain" style="display: flex; flex-direction: column; gap: 0.5rem; max-width: 600px; margin: auto;">
-      <label data-lang="en">Name:</label>
-      <label data-lang="tr">İsim:</label>
-      <input type="text" name="name" required />
-
-      <label data-lang="en">Email:</label>
-      <label data-lang="tr">E-posta:</label>
-      <input type="email" name="email" required />
-
-      <label data-lang="en">Message:</label>
-      <label data-lang="tr">Mesaj:</label>
-      <textarea name="message" rows="5" required></textarea>
-
-      <button type="submit" data-lang="en">Send</button>
-      <button type="submit" data-lang="tr">Gönder</button>
-    </form>
-    <p data-lang="en"><strong>Phone:</strong> +90 546 292 7001</p>
-    <p data-lang="tr"><strong>Telefon:</strong> +90 546 292 7001</p>
-    <div style="text-align: center; margin-top: 2rem;">
-      <a href="cv.pdf" download style="background-color:#4A90E2; color:white; padding:0.7rem 1.2rem; text-decoration:none; border-radius:5px;">Download CV</a>
     </div>
   </section>
 
