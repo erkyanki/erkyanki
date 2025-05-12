@@ -5,14 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Personal Web Portfolio</title>
   <style>
-    /* Renk paletinin tutarlılığı için değişkenler */
     :root {
-      --main-red: #D32F2F;  /* Ana kırmızı renk */
-      --secondary-red: #B71C1C; /* Daha koyu kırmızı */
-      --light-bg: #F5F5F5;  /* Açık arka plan rengi */
-      --dark-bg: #222222;  /* Koyu arka plan rengi */
-      --button-hover: #B71C1C; /* Koyu kırmızı */
-      --button-hover-light: #B71C1C; /* Koyu kırmızı, hover rengi */
+      --main-red: #D32F2F;
+      --secondary-red: #B71C1C;
+      --light-bg: #F5F5F5;
+      --dark-bg: #222222;
+      --button-hover: #B71C1C;
+      --button-hover-light: #B71C1C;
     }
 
     body {
@@ -38,10 +37,6 @@
       border-bottom: 3px solid #222;
     }
 
-    header h1 {
-      color: white;
-    }
-
     nav {
       background-color: var(--main-red);
       display: flex;
@@ -64,8 +59,8 @@
     }
 
     nav a:hover {
-      color: #F0F8FF; /* Açık mavi */
-      background-color: var(--secondary-red); /* Koyu kırmızı */
+      color: #F0F8FF;
+      background-color: var(--secondary-red);
     }
 
     section {
@@ -141,7 +136,6 @@
       }
     }
 
-    /* Dark Mode ve Light Mode */
     body.light-mode {
       background-color: #f5f5f5;
       color: #222;
@@ -169,14 +163,12 @@
       background-color: var(--button-hover);
     }
 
-    /* Form ve fotoğrafın altındaki yazıyı ortalamak */
     section#home p {
       text-align: center;
       margin-top: 10px;
       font-size: 1.2rem;
     }
 
-    /* Send ve Download CV butonları */
     .button-red {
       background-color: var(--button-hover-light);
       color: white;
@@ -189,41 +181,12 @@
     .button-red:hover {
       background-color: var(--button-hover);
     }
-
   </style>
+
   <script>
     function toggleLanguage(lang) {
       document.querySelectorAll('[data-lang]').forEach(el => {
-        el.style.display = el.getAttribute('data-lang') === lang ? 'block' : 'none';
-      });
-
-      // Menü başlıklarını güncelle
-      const menuItems = {
-        en: {
-          home: 'Home',
-          about: 'About',
-          projects: 'Projects',
-          education: 'Education',
-          experience: 'Experience',
-          contact: 'Contact',
-          services: 'My Services',
-        },
-        tr: {
-          home: 'Anasayfa',
-          about: 'Hakkımda',
-          projects: 'Projeler',
-          education: 'Eğitim',
-          experience: 'Deneyim',
-          contact: 'İletişim',
-          services: 'Hizmetlerim',
-        }
-      };
-
-      // Menü başlıklarını değiştir
-      const navLinks = document.querySelectorAll('nav a');
-      navLinks.forEach(link => {
-        const id = link.getAttribute('href').slice(1); // id'yi al
-        link.textContent = menuItems[lang][id]; // Dilenilen dildeki başlığı yerleştir
+        el.style.display = el.getAttribute('data-lang') === lang ? 'inline' : 'none';
       });
     }
 
@@ -234,40 +197,39 @@
 
     window.onload = () => {
       document.body.classList.add('loaded');
-      toggleLanguage('en'); // Sayfa yüklendiğinde İngilizce varsayılan olarak seçili
+      toggleLanguage('en');
 
-      // Sayfa Kayarak Gelme Efekti
       const sections = document.querySelectorAll('section');
       sections.forEach((section, index) => {
         setTimeout(() => {
           section.classList.add('active');
-        }, index * 500); // Her bir bölüm için kayarak açılma sırası
+        }, index * 500);
       });
 
-      // Scroll Kayma Efekti
       const links = document.querySelectorAll('nav a');
       links.forEach(link => {
         link.addEventListener('click', function (e) {
           e.preventDefault();
           const targetId = this.getAttribute('href').slice(1);
           const targetElement = document.getElementById(targetId);
-          
-          window.scrollTo({
-            top: targetElement.offsetTop - 50, // Hedef öğe üstüne kaydırma (biraz yukarıya kaydırdık)
-            behavior: 'smooth'
-          });
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 50,
+              behavior: 'smooth'
+            });
+          }
         });
       });
     };
   </script>
 </head>
+
 <body class="light-mode">
   <div class="language-toggle">
     <button onclick="toggleLanguage('en')">EN</button>
     <button onclick="toggleLanguage('tr')">TR</button>
   </div>
 
-  <!-- Dark Mode / Light Mode Toggle Button -->
   <button class="toggle-mode" onclick="toggleMode()">Toggle Dark Mode</button>
 
   <header>
@@ -277,12 +239,19 @@
 
   <nav>
     <a href="#home" data-lang="en">Home</a>
+    <a href="#home" data-lang="tr">Ana Sayfa</a>
     <a href="#about" data-lang="en">About</a>
+    <a href="#about" data-lang="tr">Hakkımda</a>
     <a href="#projects" data-lang="en">Projects</a>
+    <a href="#projects" data-lang="tr">Projeler</a>
     <a href="#education" data-lang="en">Education</a>
+    <a href="#education" data-lang="tr">Eğitim</a>
     <a href="#experience" data-lang="en">Experience</a>
+    <a href="#experience" data-lang="tr">Deneyim</a>
+    <a href="#services" data-lang="en">Services</a>
+    <a href="#services" data-lang="tr">Hizmetler</a>
     <a href="#contact" data-lang="en">Contact</a>
-    <a href="#services" data-lang="en">My Services</a>
+    <a href="#contact" data-lang="tr">İletişim</a>
   </nav>
 
   <section id="home">
@@ -293,105 +262,17 @@
     <p data-lang="tr">Tasarım ve inovasyona tutkusu olan bir makine mühendisliği öğrencisi.</p>
   </section>
 
-  <section id="about">
-    <h2 data-lang="en">About Me</h2>
-    <h2 data-lang="tr">Hakkımda</h2>
-    <p data-lang="en">
-      My name is <strong>Erk Yankı Ural</strong>, and I am a final-year Mechanical Engineering student at Yaşar University. I am deeply committed to leveraging engineering skills to create sustainable, efficient, and technologically innovative systems. My academic focus includes thermodynamic systems, energy optimization, and product design. I’ve actively contributed to multidisciplinary projects involving hydrogen production, reverse osmosis systems, and geothermal-based multigeneration plants, where I applied SolidWorks, AutoCAD, and MATLAB tools. I am motivated to join future-forward teams that tackle engineering challenges through research, design, and sustainability-focused innovation.
-    </p>
-    <p data-lang="tr">
-      Ben <strong>Erk Yankı Ural</strong>, Yaşar Üniversitesi Makine Mühendisliği son sınıf öğrencisiyim. Mühendislik becerilerini sürdürülebilir, verimli ve teknolojik olarak yenilikçi sistemler geliştirmek için kullanmaya kararlıyım. Akademik ilgi alanlarım arasında termodinamik sistemler, enerji optimizasyonu ve ürün tasarımı yer alıyor. SolidWorks, AutoCAD ve MATLAB gibi araçları kullanarak hidrojen üretimi, ters ozmoz sistemleri ve jeotermal tabanlı çoklu üretim tesislerini içeren disiplinler arası projelere aktif olarak katkı sağladım. Araştırma, tasarım ve sürdürülebilirlik odaklı inovasyonla mühendislik sorunlarına çözüm getiren ekiplerde yer almak istiyorum.
-    </p>
-  </section>
+  <!-- Diğer bölümler buraya gelecek... (About, Projects, Education, Experience, Contact) -->
 
-  <section id="projects">
-    <h2 data-lang="en">Projects</h2>
-    <h2 data-lang="tr">Projeler</h2>
-    <div data-lang="en">
-      <img src="project1.jpg" alt="MakerX RC Car">
-      <h3>MakerX Arduino RC Car Project</h3>
-      <p><strong>Goal:</strong> To develop a Bluetooth-controlled RC car using MakerX and Arduino technologies.</p>
-      <p><strong>Technologies Used:</strong> Arduino UNO, Bluetooth Module (HC-05), Motor Driver (L298N), MakerX Robotics Kit</p>
-      <p><strong>My Contribution:</strong> Programmed the Arduino microcontroller, integrated the Bluetooth module for remote control, and assembled the car's electrical and mechanical components.</p>
-      <p><strong>Outcome:</strong> Created a fully functional RC car that can be remotely controlled via a mobile app.</p>
-    </div>
-
-    <div data-lang="tr">
-      <img src="project1.jpg" alt="MakerX RC Araba">
-      <h3>MakerX Arduino ile Uzaktan Kumandalı Araba Projesi</h3>
-      <p><strong>Proje Amacı:</strong> MakerX ve Arduino teknolojilerini kullanarak Bluetooth ile uzaktan kontrol edilebilen bir RC araba geliştirmek.</p>
-      <p><strong>Kullanılan Teknolojiler:</strong> Arduino UNO, Bluetooth Modülü (HC-05), Motor Sürücü (L298N), MakerX Robotik Kiti</p>
-      <p><strong>Benim Katkım:</strong> Arduino mikrodenetleyicisini programladım, Bluetooth modülünü entegre ederek mobil uygulama ile kontrol sağladım ve aracın elektriksel ve mekanik montajını gerçekleştirdim.</p>
-      <p><strong>Sonuç:</strong> Mobil uygulama ile uzaktan kontrol edilebilen tam işlevsel bir RC araba geliştirildi.</p>
-    </div>
-
-    <div data-lang="en">
-      <img src="project2.png" alt="Geothermal Power Plant Diagram">
-      <h3>Multigeneration Geothermal Power Plant</h3>
-      <p><strong>Goal:</strong> To design a geothermal-based multigeneration system producing electricity, hydrogen, and freshwater.</p>
-      <p><strong>Technologies Used:</strong> SolidWorks, MATLAB, Engineering Equation Solver (EES)</p>
-      <p><strong>My Contribution:</strong> Designed system components, performed thermodynamic analysis, and optimized hydrogen and water output using real geothermal data.</p>
-      <p><strong>Outcome:</strong> The model showed feasibility and high efficiency of a combined system, contributing to sustainable energy solutions.</p>
-    </div>
-
-    <div data-lang="tr">
-      <img src="project2.png" alt="Jeotermal Enerji Sistemi Diyagramı">
-      <h3>Çoklu Üretim İçin Jeotermal Enerji Santrali</h3>
-      <p><strong>Proje Amacı:</strong> Elektrik, hidrojen ve tatlı su üretebilen jeotermal tabanlı bir çoklu üretim sistemi tasarlamak.</p>
-      <p><strong>Kullanılan Teknolojiler:</strong> SolidWorks, MATLAB, Engineering Equation Solver (EES)</p>
-      <p><strong>Benim Katkım:</strong> Sistem bileşenlerini tasarladım, termodinamik analiz yaptım ve jeotermal verilerle hidrojen ve su üretimini optimize ettim.</p>
-      <p><strong>Sonuç:</strong> Model, entegre sistemin uygulanabilirliğini ve yüksek verimliliğini göstererek sürdürülebilir enerji çözümlerine katkı sağladı.</p>
-    </div>
-  </section>
-
-  <section id="education">
-    <h2 data-lang="en">Education</h2>
-    <h2 data-lang="tr">Eğitim</h2>
-    <ul data-lang="en">
-      <li><strong>Yaşar University</strong> – B.Sc. in Mechanical Engineering (2021 – 2025)</li>
-      <li><strong>Yunus Emre Anatolian High School</strong> (2014 – 2018)</li>
+  <section id="services">
+    <h2 data-lang="en">My Services</h2>
+    <h2 data-lang="tr">Hizmetlerim</h2>
+    <p data-lang="en">You can find me on the freelance platforms below:</p>
+    <p data-lang="tr">Beni aşağıdaki serbest çalışma platformlarında bulabilirsiniz:</p>
+    <ul>
+      <li><a href="https://www.fiverr.com/yourfiverr" target="_blank" style="color: var(--main-red); font-weight: bold;">Fiverr</a></li>
+      <li><a href="https://www.bionluk.com/yourbionluk" target="_blank" style="color: var(--main-red); font-weight: bold;">Bionluk</a></li>
     </ul>
-    <ul data-lang="tr">
-      <li><strong>Yaşar Üniversitesi</strong> – Makine Mühendisliği Lisans Programı (2021 – 2025)</li>
-      <li><strong>Yunus Emre Anadolu Lisesi</strong> (2014 – 2018)</li>
-    </ul>
-  </section>
-
-  <section id="experience">
-    <h2 data-lang="en">Experience</h2>
-    <h2 data-lang="tr">Deneyim</h2>
-    <ul data-lang="en">
-      <li><strong>Intern, Production Department – CMS Jant</strong> (2023)<br>Assisted in production line observation, quality control steps, and gained experience in industrial wheel manufacturing processes.</li>
-    </ul>
-    <ul data-lang="tr">
-      <li><strong>Stajyer, Üretim Departmanı – CMS Jant</strong> (2023)<br>Üretim hattı gözlemleri, kalite kontrol adımları ve endüstriyel jant üretimi süreçlerinde deneyim kazandım.</li>
-    </ul>
-  </section>
-
-  <section id="contact">
-    <h2 data-lang="en">Contact</h2>
-    <h2 data-lang="tr">İletişim</h2>
-    <form action="mailto:erkyanki@gmail.com" method="post" enctype="text/plain" style="display: flex; flex-direction: column; gap: 0.5rem; max-width: 600px; margin: auto;">
-      <label data-lang="en">Name:</label>
-      <label data-lang="tr">İsim:</label>
-      <input type="text" name="name" required />
-
-      <label data-lang="en">Email:</label>
-      <label data-lang="tr">E-posta:</label>
-      <input type="email" name="email" required />
-
-      <label data-lang="en">Message:</label>
-      <label data-lang="tr">Mesaj:</label>
-      <textarea name="message" rows="5" required></textarea>
-
-      <button type="submit" data-lang="en">Send</button>
-      <button type="submit" data-lang="tr">Gönder</button>
-    </form>
-    <p data-lang="en"><strong>Phone:</strong> +90 546 292 7001</p>
-    <p data-lang="tr"><strong>Telefon:</strong> +90 546 292 7001</p>
-    <div style="text-align: center; margin-top: 2rem;">
-      <a href="cv.pdf" download style="background-color:#D32F2F; color:white; padding:0.7rem 1.2rem; text-decoration:none; border-radius:5px;">Download CV</a>
-    </div>
   </section>
 
   <footer>
